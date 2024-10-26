@@ -1,2 +1,13 @@
 # Coffee Shop Sales Analysis using SQL and Power BI
   
+### 1. Objective:
+Analyze sales data from a coffee shop to gain insights into sales performance, product popularity, store performance, and temporal trends.
+Use SQL for data querying and Power BI for visualization.
+Tools Used: SQL, Power BI, Excel for initial data storage.
+Scope: Data includes information about transactions, products, stores, and time-based attributes.
+### 2. Data Collection & Import
+Source of Data:
+The sales data is stored in an Excel file with fields like transaction_id, transaction_date, transaction_time, store_id, store_location, product_id, unit_price, product_category, product_type, product_detail, and transaction_qty.
+Data Import:
+The Excel file is imported into both SQL and Power BI for further processing and analysis.
+### 3. Data Cleaning & Transformation
