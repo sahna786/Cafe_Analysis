@@ -6,8 +6,8 @@
 - Tools Used: SQL, Power BI, Excel for initial data storage.
 - Scope: Data includes information about transactions, products, stores, and time-based attributes.
 ### 2. Data Collection & Import
-Source of Data:
+- Source of Data:
 The sales data is stored in an Excel file with fields like transaction_id, transaction_date, transaction_time, store_id, store_location, product_id, unit_price, product_category, product_type, product_detail, and transaction_qty.
-Data Import:
+- Data Import:
 The Excel file is imported into both SQL and Power BI for further processing and analysis.
 ### 3. Data Cleaning & Transformation
