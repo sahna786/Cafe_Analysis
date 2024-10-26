@@ -34,7 +34,7 @@ The Excel file is imported into both SQL and Power BI for further processing and
   CHANGE COLUMN `ï»¿transaction_id` transaction_id INT;
   ```
 
-- Total Sales for each respective month (Eg: for May)
+1. Total Sales for each respective month (Eg: for May)
   ```sql
   SELECT CONCAT(ROUND(SUM(unit_price * transaction_qty)/1000), 'K') AS total_sales 
   FROM coffee_shop_sales
