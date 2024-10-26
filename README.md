@@ -13,7 +13,7 @@ The Excel file is imported into both SQL and Power BI for further processing and
 ### 3. Data Cleaning & Transformation
 - Date and Time Conversion: Convert transaction_date and transaction_time fields from string to DATE and TIME types:
 sql
-```sql
+```
 UPDATE coffee_shop_sales 
 SET transaction_date = STR_TO_DATE(transaction_date, '%d/%m/%Y');
 
