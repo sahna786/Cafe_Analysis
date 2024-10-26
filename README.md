@@ -11,3 +11,18 @@ The sales data is stored in an Excel file with fields like transaction_id, trans
 - Data Import:
 The Excel file is imported into both SQL and Power BI for further processing and analysis.
 ### 3. Data Cleaning & Transformation
+- Date and Time Conversion: Convert transaction_date and transaction_time fields from string to DATE and TIME types:
+sql
+```sql
+UPDATE coffee_shop_sales 
+SET transaction_date = STR_TO_DATE(transaction_date, '%d/%m/%Y');
+
+ALTER TABLE coffee_shop_sales
+MODIFY COLUMN transaction_date DATE;
+
+UPDATE coffee_shop_sales 
+SET transaction_time = STR_TO_DATE(transaction_time, '%H:%i:%s');
+
+ALTER TABLE coffee_shop_sales
+MODIFY COLUMN transaction_time TIME;
+```
