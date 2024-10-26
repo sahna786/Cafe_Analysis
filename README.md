@@ -85,3 +85,10 @@ The Excel file is imported into both SQL and Power BI for further processing and
   FROM monthly_orders
   ORDER BY month;
   ```
+  
+- Calculate the total quantity sold in each respective month
+  ```sql
+  select month(transaction_date) as month, sum(transaction_qty) as total_qty_sold
+  from coffee_shop_sales
+  group by month;
+  ```
