@@ -41,7 +41,7 @@ The Excel file is imported into both SQL and Power BI for further processing and
   WHERE MONTH(transaction_date) = 5;
   ```
 
-- calculate the total sales for each month and the month-over-month (MoM) percentage change in sales
+2. calculate the total sales for each month and the month-over-month (MoM) percentage change in sales
   ```sql
   SELECT 
     MONTH(transaction_date) AS current_month, 
@@ -59,7 +59,7 @@ The Excel file is imported into both SQL and Power BI for further processing and
   ORDER BY MONTH(transaction_date);
   ```
 
-- Calculate the total no: of orders for each month
+3. Calculate the total no: of orders for each month
   ```sql
   SELECT 
     MONTH(transaction_date) AS month, 
@@ -68,7 +68,7 @@ The Excel file is imported into both SQL and Power BI for further processing and
   GROUP BY MONTH(transaction_date);
   ```
 
-- Calculate the month-over-month (MoM) increase/decrease in the total number of orders and the percentage change between months
+4. Calculate the month-over-month (MoM) increase/decrease in the total number of orders and the percentage change between months
   ```sql
   WITH monthly_orders AS (
     SELECT 
