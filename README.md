@@ -40,3 +40,48 @@ The Excel file is imported into both SQL and Power BI for further processing and
   FROM coffee_shop_sales
   WHERE MONTH(transaction_date) = 5;
   ```
+
+- calculate the total sales for each month and the month-over-month (MoM) percentage change in sales
+  ```sql
+  SELECT 
+    MONTH(transaction_date) AS current_month, 
+    SUM(unit_price * transaction_qty) AS total_sales,
+    
+    -- Month-over-month percentage change in sales
+    (SUM(unit_price * transaction_qty) - 
+    LAG(SUM(unit_price * transaction_qty)) OVER (ORDER BY MONTH(transaction_date)))
+    / LAG(SUM(unit_price * transaction_qty)) OVER (ORDER BY MONTH(transaction_date)) * 100 
+    AS mom_change_percentage
+    
+  FROM coffee_shop_sales
+
+  GROUP BY MONTH(transaction_date)
+  ORDER BY MONTH(transaction_date);
+  ```
+
+- Calculate the total no: of orders for each month
+  ```sql
+  SELECT 
+    MONTH(transaction_date) AS month, 
+    COUNT(transaction_id) AS total_orders
+  FROM coffee_shop_sales
+  GROUP BY MONTH(transaction_date);
+  ```
+
+- Calculate the month-over-month (MoM) increase in the total number of orders and the percentage change between months
+  ```sql
+  WITH monthly_orders AS (
+    SELECT 
+        MONTH(transaction_date) AS month, 
+        COUNT(transaction_id) AS total_orders
+    FROM coffee_shop_sales
+    GROUP BY MONTH(transaction_date)
+  )
+  SELECT 
+      month,
+      total_orders,
+      total_orders - LAG(total_orders) OVER (ORDER BY month) AS mom_difference,
+      (total_orders - LAG(total_orders) OVER (ORDER BY month)) / LAG(total_orders) OVER (ORDER BY month) * 100 AS mom_increase_percentage
+  FROM monthly_orders
+  ORDER BY month;
+  ```
