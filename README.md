@@ -248,6 +248,7 @@ The Excel file is imported into both SQL and Power BI for further processing and
 ### Business Impact and Recommendations
 Impact:
 - The analysis provides insights into peak sales hours and high-performing products and locations, which can help in optimizing inventory, staff scheduling, and promotional efforts.
+
 Recommendations:
 - Focus marketing and promotional efforts on weekends, particularly around peak times (9AM - 12PM) when sales are the highest.
 - Consider increasing inventory for popular products like Coffee and Tea to meet customer demand.
