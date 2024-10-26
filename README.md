@@ -33,6 +33,7 @@ The Excel file is imported into both SQL and Power BI for further processing and
   ALTER TABLE coffee_shop_sales
   CHANGE COLUMN `ï»¿transaction_id` transaction_id INT;
   ```
+### Business Problems and Solutions
 
 1. Total Sales for each respective month (Eg: for May)
   ```sql
@@ -85,8 +86,7 @@ The Excel file is imported into both SQL and Power BI for further processing and
   FROM monthly_orders
   ORDER BY month;
   ```
-  
-- Calculate the total quantity sold in each respective month
+5. Calculate the total quantity sold in each respective month
   ```sql
   SELECT 
       MONTH(transaction_date) AS month, 
@@ -96,7 +96,7 @@ The Excel file is imported into both SQL and Power BI for further processing and
 
   ```
 
-- Calculate the month-over-month (MoM) increase/decrease in the total quantity sold and the percentage change between months in total quantity sold
+6. Calculate the month-over-month (MoM) increase/decrease in the total quantity sold and the percentage change between months in total quantity sold
   ```sql
   WITH monthly_qty AS (
     SELECT 
@@ -114,7 +114,7 @@ The Excel file is imported into both SQL and Power BI for further processing and
   ORDER BY month;
   ```
 
-- Calculate the total sales for weekdays and weekends for the specified month (May)
+7. Calculate the total sales for weekdays and weekends for the specified month (May)
   ```sql
   SELECT 
     MONTH(transaction_date) AS month,
@@ -128,7 +128,7 @@ The Excel file is imported into both SQL and Power BI for further processing and
   GROUP BY MONTH(transaction_date), day_type;
   ```
 
-- Calculate total sales by store location for a specific month (May)
+8. Calculate total sales by store location for a specific month (May)
   ```sql
   SELECT 
     store_location,
@@ -139,7 +139,7 @@ The Excel file is imported into both SQL and Power BI for further processing and
   ORDER BY total_sales DESC;
   ```
 
-- Calculate the average sales for specific month (May)
+9. Calculate the average sales for specific month (May)
   ```sql
   SELECT 
     CONCAT(ROUND(AVG(total_sales) / 1000, 1), 'K') AS avg_sales 
@@ -151,7 +151,7 @@ The Excel file is imported into both SQL and Power BI for further processing and
   ) a;
   ```
 
-- Calculate the daily total sales of a specific month (May)
+10. Calculate the daily total sales of a specific month (May)
   ```sql
   SELECT 
     DAY(transaction_date) AS day_of_month,
@@ -162,7 +162,7 @@ The Excel file is imported into both SQL and Power BI for further processing and
   ORDER BY day_of_month;
   ```
 
-- Compare each day's total_sales to avg_sales and categorize them as "Above Average," "Below Average," or "Equal to Average."
+11. Compare each day's total_sales to avg_sales and categorize them as "Above Average," "Below Average," or "Equal to Average."
   ```sql
   SELECT 
     day_of_month,
@@ -183,7 +183,7 @@ The Excel file is imported into both SQL and Power BI for further processing and
   ) a;
   ```
 
-- Calculate total sales by product category and sort them descending order
+12. List product category by total sales and sort them descending order
   ```sql
   SELECT 
     product_category,
@@ -194,7 +194,7 @@ The Excel file is imported into both SQL and Power BI for further processing and
   ORDER BY total_sales DESC;
   ```
 
-- Determine top 10 products by total sales
+13. Determine top 10 products by total sales
   ```sql
   SELECT 
     product_type,
@@ -206,7 +206,7 @@ The Excel file is imported into both SQL and Power BI for further processing and
   LIMIT 10;
   ```
 
-- Calculate total Sales, total quantity sold, total orders for a specific day and time (Month: May, Day: Monday, Hour: 8)
+14. Calculate total Sales, total quantity sold, total orders for a specific day and time (Month: May, Day: Monday, Hour: 8)
   ```sql
   SELECT 
     SUM(unit_price * transaction_qty) AS total_sales,
@@ -217,7 +217,7 @@ The Excel file is imported into both SQL and Power BI for further processing and
       AND DAYOFWEEK(transaction_date) = 2
       AND HOUR(transaction_time) = 8;
   ```
-- Calculate the hourly total sales for a specific month (May)
+15. Calculate the hourly total sales for a specific month (May)
   ```sql
   SELECT 
     HOUR(transaction_time) AS hours,
@@ -228,7 +228,7 @@ The Excel file is imported into both SQL and Power BI for further processing and
   ORDER BY hours;
   ```
 
-- Calculate weekly total sales for a specific month (may)
+16. Calculate weekly total sales for a specific month (may)
   ```sql
   SELECT 
     CASE 
@@ -245,7 +245,16 @@ The Excel file is imported into both SQL and Power BI for further processing and
   WHERE MONTH(transaction_date) = 5
   GROUP BY day_of_week;
   ```
-
+### Business Impact and Recommendations
+Impact:
+- The analysis provides insights into peak sales hours and high-performing products and locations, which can help in optimizing inventory, staff scheduling, and promotional efforts.
+Recommendations:
+- Focus marketing and promotional efforts on weekends, particularly around peak times (9AM - 12PM) when sales are the highest.
+- Consider increasing inventory for popular products like Coffee and Tea to meet customer demand.
+- Explore opportunities for improving sales at stores with lower performance (e.g., Lower Manhattan).
+  
+### Conclusion
+The SQL-based data analysis combined with Power BI visualization provides actionable insights into sales trends, product preferences, and store performance. These insights can inform better decision-making for operational efficiency and profitability
   
 
 
